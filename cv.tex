@@ -64,13 +64,14 @@
 }
 
 \newcommand{\EntryTitle}[2]{%
+  \vspace{0.1em}
   \noindent{%
     \fontsize{10.5}{11.8}\selectfont
     \begin{tabular*}{\linewidth}{@{}l@{\extracolsep{\fill}}r@{}}
       \bfseries #1 & \itshape\color{muted}\mbox{#2}
     \end{tabular*}\par
   }%
-  \vspace{0.02em}
+  \vspace{0.1em}
 }
 
 \newcommand{\BodyLine}[1]{%
@@ -101,13 +102,12 @@
 
 \noindent\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{0.55em}}>{\raggedleft\arraybackslash}p{2.45cm}@{}}
 \begin{minipage}[t]{\linewidth}
-  \vspace{0pt}
-  % \TopSectionBar{基本信息}
-  \SectionBar{基本信息}
-  \BodyLine{男 \quad 21岁 \quad 汉族 \quad 中共党员 \quad 江苏无锡}
-  \BodyLine{电话/微信：13656160098 \hspace{6.2em} 邮箱：\underline{\href{mailto:22373017@buaa.edu.cn}{22373017@buaa.edu.cn}}}
-  \BoldLine{北京航空航天大学 - 计算机学院 - 计算机科学与技术（2022--2026）}
-  \BoldLine{拟录取：北京大学 - 集成电路学院 - 电子设计自动化与计算系统（2026--）}
+\vspace{0pt}
+\SectionBar{基本信息}
+\BodyLine{男 \quad 21岁 \quad 汉族 \quad 中共党员 \quad 江苏无锡}
+\BodyLine{电话/微信：13656160098 \hspace{5em} 邮箱：\underline{\href{mailto:22373017@buaa.edu.cn}{22373017@buaa.edu.cn}}}
+\BoldLine{本科：北京航空航天大学 - 计算机学院 - 计算机科学与技术（2022--2026）}
+\BoldLine{直博：北京大学 - 集成电路学院 - 电子设计自动化与计算系统（2026--）}
 \end{minipage}
 &
 \vspace*{-2.5em}
@@ -116,27 +116,46 @@
 
 \SectionBar{个人简述}
 \BodyLine{成绩优异，勤于思考的大四本科生，具有扎实的数理基础和代码能力，有良好的项目基础和科研经历。}
-\BulletLine{\textbf{专业排名 19/239（前10\%）；均分 92.54，GPA 3.86/4}}
-\BodyLine{\textbf{核心专业课程成绩（部分）：} 面向对象100，智能计算体系结构99，概率统计99，数据挖掘97，计算机组成95\ldots}
-\BodyLine{担任北航计算机学院\textbf{计算机组成课程高阶助教、操作系统课程助教}；编译课程大作业为\textbf{全国教师培训实例代码}}
+\BulletLine{\textbf{本科专业排名 19/239（前10\%）；均分 92.54，GPA 3.86/4}}
+\BulletLine{\textbf{核心专业课程成绩（部分）：} 面向对象100，智能计算体系结构99，概率统计99，数据挖掘97，计算机组成95\ldots}
+\BulletLine{担任北航计算机学院\textbf{计算机组成课程高阶助教、操作系统课程助教}；编译课程大作业为\textbf{全国教师培训实例代码}}
 
 \SectionBar{科研经历}
-\EntryTitle{北大集成电路学院 卓有为助理教授团队 机器学习系统方向}{2025.2-至今}
+\EntryTitle{
+北大集成电路学院 \quad
+卓有为助理教授团队 \quad
+Agent系统方向
+}{2025.2-至今}
+
+\BulletLine{第一作者完成 \textbf{\uline{TokenDance}}，在LLM agent应用的推理加速优化中，针对Function Call场景进行优化}
+\BulletLine{arXiv版本： \underline{\href{https://arxiv.org/abs/2604.03143}{TokenDance: Scaling Multi-Agent LLM Serving via Collective KV Cache Sharing}}}
+
 \BulletLine{第一作者完成 \textbf{\uline{TokenCake}}，在LLM agent应用的推理加速优化中，针对Function Call场景进行优化}
-\LinkLine{arXiv版本： \underline{\href{https://arxiv.org/abs/2503.08415}{Tokencake: A KV-Cache-centric Serving Framework for LLM-based Multi-Agent Applications}}}
-\BulletLine{第二作者参与 \textbf{\uline{TokenSim}}，支持对LLM的推理进行软硬件模拟，模拟误差小于5\%，支持模拟PD分离等前沿探索。}
-\LinkLine{APPT2025： \underline{\href{https://arxiv.org/abs/2510.18586}{TokenSim: Enabling Hardware and Software Exploration for Large Language Model Inference Systems}}}
+\BulletLine{arXiv版本： \underline{\href{https://arxiv.org/abs/2503.08415}{Tokencake: A KV-Cache-centric Serving Framework for LLM-based Multi-Agent Applications}}}
+
+\BulletLine{第二作者参与 \textbf{\uline{TokenSim}}，支持对LLM的推理进行软硬件模拟，模拟误差小于$5\%$，支持模拟PD分离等前沿探索。}
+\BulletLine{APPT2025： \underline{\href{https://arxiv.org/abs/2510.18586}{TokenSim: Enabling Hardware and Software Exploration for Large Language Model Inference Systems}}}
 \TightSpace
 
-\EntryTitle{北航复杂关键软件环境全国重点实验室 刘祥龙教授团队 强化学习方向 第四作者（本科生第一）}{2024.7-2025.1}
+\EntryTitle{
+北航复杂关键软件环境全国重点实验室 \quad
+刘祥龙教授团队 \quad
+强化学习安全方向
+}{2024.7-2025.1}
+
 \BulletLine{参与搭建了多智能体强化学习算法鲁棒性评测平台\textbf{AMB}，共同设计了衡量攻击算法鲁棒性的统一标准。}
 \BulletLine{工作中参与设计攻击算法的设计与代码编写，设计了整体实验流程，对实验结果进行分析，撰写了部分论文。}
-\LinkLine{Nips2025： Implementation Choice Over Optimization in Multi-Agent Reinforcement Learning}
+\BulletLine{Nips2025： Empirical Study on Robustness and Resilience in Cooperative Multi-Agent Reinforcement Learning}
 \TightSpace
 
-\EntryTitle{北航中德联合软件研究所 栾钟治副教授团队 高性能计算方向}{2023.9-2024.5}
+\EntryTitle{
+北航中德联合软件研究所 \quad
+栾钟治副教授团队 \quad
+高性能计算方向
+}{2023.9-2024.5}
+
 \BulletLine{基于新一代天河超算（天河三号）的特殊体系结构，匹配超算异构计算节点，以实现注意力机制加速。}
-\LinkLine{HPC-CHINA2024优秀论文： MT-3000 处理器上的 \underline{Multi-Head Attention} 优化}
+\BulletLine{HPC-CHINA2024优秀论文： MT-3000 处理器上的 \underline{Multi-Head Attention} 优化}
 
 \SectionBar{项目经历}
 \EntryTitle{「商汤科技实习」 \uline{LightLLM} LLM推理加速框架算法研究}{2025.6-2025.10}
@@ -144,7 +163,6 @@
 \BulletLine{针对PD分离调度负载均衡，进行了从实例调度、相应KV Cache传输算子开发的优化}
 \BulletLine{针对Mineru2.5进行了多模态推理加速适配}
 \BulletLine{深入调研了dLLM，研究如何在现有推理框架上集成}
-\TightSpace
 
 \EntryTitle{2024年计算机系统能力大赛CPU赛道（龙芯杯）全国第四（二等奖）}{2024.7-2024.8}
 \BulletLine{\textbf{计算机系统方向本科生最高赛事。} 乱序双发射的十三级流水的超标量处理器，支持启动Linux。}
@@ -156,7 +174,8 @@
 \BodyLine{航空工业奖学金、北航学习优秀奖学金一等奖、竞赛奖学金特等奖、创新创业二等奖、“七三奖章”奖学金}
 
 \SectionBar{语言与技能}
-\BodyLine{语言：\textbf{CET-6：589} \hspace{8.2em} 个人博客： \underline{\href{https://zhhangbian.github.io/}{https://zhhangbian.github.io/}}}
+\BodyLine{语言：\textbf{CET-6：589}}
+\BodyLine{个人博客： \underline{\href{https://zhhangbian.github.io/}{https://zhhangbian.github.io/}}}
 \BodyLine{工程：数量平台开发、系统维护、前后端开发；负责\textbf{北航计算机组成课程教学系统}的运行维护。}
 \BodyLine{技能：\textbf{与人友善相处和高效沟通的能力、对感兴趣的事物执着追求的毅力、高效的学习和自我驱动能力}}
 
