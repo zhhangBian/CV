@@ -1,0 +1,17 @@
+default_stages: [pre-commit]
+
+repos:
+  - repo: local
+    hooks:
+      - id: trim-trailing-whitespace
+        name: Trim trailing whitespace
+        entry: python3 scripts/trim_trailing_whitespace.py
+        language: system
+        types: [text]
+
+      - id: build-with-make-sh
+        name: Build via make.sh
+        entry: ./make.sh
+        language: system
+        pass_filenames: false
+        always_run: true
