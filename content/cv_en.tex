@@ -1,0 +1,84 @@
+\Name{Zhuohang Bian}
+\vspace{0em}
+\Subtitle{Beihang University | Computer Science and Technology}
+\vspace{0.06em}
+
+\noindent\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{0.55em}}>{\raggedleft\arraybackslash}p{2.45cm}@{}}
+\begin{minipage}[t]{\linewidth}
+\vspace{0pt}
+\SectionBar{Profile}
+\BodyLine{Phone / WeChat: 13656160098 \hspace{4em} Email: \underline{\href{mailto:22373017@buaa.edu.cn}{22373017@buaa.edu.cn}}}
+\BoldLine{B.Eng.: Beihang University - School of Computer Science and Engineering - Computer Science and Technology (2022-2026)}
+\BoldLine{Incoming Ph.D.: Peking University - School of Integrated Circuits - Electronic Design Automation and Computing Systems (2026-)}
+\end{minipage}
+&
+\vspace*{-2em}
+\includegraphics[width=2.36cm]{assets/headshot.jpg}
+\end{tabularx}
+
+\SectionBar{Summary}
+\BodyLine{Research and engineering focus at the intersection of systems and AI, with hands-on work in LLM inference systems and computer architecture. Comfortable working across the stack from algorithms to systems implementation.}
+\BulletLine{\textbf{Undergraduate major rank: 19/239 (top 10\%); average score: 92.54; GPA: 3.86/4}}
+\BulletLine{\textbf{Selected core courses:} Object-Oriented Programming 100, Intelligent Computing Architecture 99, Probability and Statistics 99, Data Mining 97, Computer Organization 95\ldots}
+\BulletLine{Advanced TA for \textbf{Computer Organization} and TA for \textbf{Operating Systems} at BUAA School of Computer Science; \uline{\href{https://github.com/zhhangBian/Compiler-Techniques}{compiler course project}} adopted as teaching example in national compiler-course teacher training.}
+
+\SectionBar{Research Experience}
+\EntryTitle{
+Peking University, School of Integrated Circuits \quad
+Prof. Youwei Zhu's Group \quad
+Agent Systems
+}{Feb 2025-Present}
+
+\BulletLine{First-authored \textbf{\uline{\href{https://arxiv.org/abs/2604.03143}{TokenDance}}}: addressed KV cache redundancy caused by All-Gather in multi-agent LLM serving with \textbf{round-level collective KV reuse} and \textbf{block-sparse diff storage}; supported \textbf{2.7$\times$} more concurrent agents than vLLM + prefix caching and improved prefill throughput by \textbf{1.9$\times$}.}
+
+\BulletLine{First-authored \textbf{\uline{\href{https://arxiv.org/abs/2503.08415}{TokenCake}}}: targeted KV cache \textbf{temporal idleness} and \textbf{spatial contention} in function-calling workloads; designed an agent-aware Time/Space Scheduler with proactive offload, predictive upload, and dynamic memory partitioning; reduced end-to-end latency by \textbf{47.06\%} over vLLM and improved effective GPU KV cache utilization by \textbf{16.9\%}.}
+
+\BulletLine{Second author on \textbf{\uline{\href{https://arxiv.org/abs/2510.18586}{TokenSim}}}, an LLM inference simulator. Built a software/hardware co-simulator for dynamic LLM serving with \textbf{scheduler and memory-manager simulation} and \textbf{prefill-decode disaggregation exploration}; simulation error was \textbf{below 1\%} on real workloads.}
+
+\vspace{0.5em}
+
+\EntryTitle{
+State Key Laboratory of Complex \& Critical Software Environment, Beihang University \quad
+Prof. Xianglong Liu's Group \quad
+Safe Reinforcement Learning
+}{Jul 2024-Jan 2025}
+
+\BulletLine{Built \textbf{AMB}, a robustness benchmark for multi-agent reinforcement learning, covering \textbf{4 real-world environments, 13 uncertainty types, and 15 key hyperparameters} and supporting \textbf{82,620} experiments. Hyperparameter optimization alone improved cooperation by \textbf{52.60\%}, robustness by \textbf{34.78\%}, and resilience by \textbf{60.34\%} on average.}
+\BulletLine{Implemented attack algorithms and experiment pipelines; contributed to result analysis and paper writing, especially on the relationship between cooperation and resilience.}
+\BulletLine{NeurIPS 2025 paper: \underline{\href{https://arxiv.org/abs/2510.11824}{arXiv:2510.11824}}}
+
+\vspace{0.5em}
+
+\EntryTitle{
+Sino-German Joint Software Institute, Beihang University \quad
+Prof. Zhongzhi Luan's Group \quad
+High-Performance Computing
+}{Sep 2023-May 2024}
+
+\BulletLine{Optimized Multi-Head Attention in PyTorch for the \textbf{MT-3000 CPU-DSP heterogeneous processor} on the new-generation Tianhe supercomputer; implemented DSP-specific optimizations for core operators such as \textbf{Linear / Softmax} with matrix tiling, DMA double buffering, communication optimization, and head-level operator scheduling.}
+\BulletLine{Handled operator registration with PyTorch 1.8 C++ extensions and performance tuning/evaluation on MT-3000; completed the Linear operator implementation.}
+\BulletLine{Outstanding Paper, HPC China 2024: Multi-Head Attention Optimization on the MT-3000 Processor.}
+
+\newpage
+\SectionBar{Projects}
+\EntryTitle{SenseTime Internship - \uline{\href{https://github.com/ModelTC/LightLLM}{LightLLM}} LLM Inference Acceleration Framework}{Jun 2025-Oct 2025}
+\BodyLine{Developed algorithms and framework components for LLM inference systems on \uline{LightLLM}; merged \textbf{6 public PRs}, focusing on \textbf{prefill-decode disaggregated scheduling, KV cache migration, and multimodal model support}.}
+\BulletLine{Refactored the PD Master node-selection path, designed an extensible selector mechanism, and added node-load-prediction-based \textbf{memory-aware routing} with load information reporting to mitigate Prefill / Decode imbalance.}
+\BulletLine{Extended KV cache migration for P/D disaggregation: added \textbf{timeout retry and KV return} for chunked decode, and implemented \textbf{CUDA/NCCL}-based kv\_trans\_v2 cross-GPU migration in multi-DP settings.}
+\BulletLine{Integrated the \textbf{MinerU2} multimodal model into LightLLM, covering tokenizer, image processor, vision modules, visual RPC, and server APIs; added observability for token usage and server ID.}
+\BulletLine{Links: repository \underline{\href{https://github.com/ModelTC/LightLLM}{LightLLM}}; PRs \underline{\href{https://github.com/ModelTC/LightLLM/pull/944}{\#944}} / \underline{\href{https://github.com/ModelTC/LightLLM/pull/970}{\#970}} / \underline{\href{https://github.com/ModelTC/LightLLM/pull/999}{\#999}} / \underline{\href{https://github.com/ModelTC/LightLLM/pull/1011}{\#1011}} / \underline{\href{https://github.com/ModelTC/LightLLM/pull/1024}{\#1024}} / \underline{\href{https://github.com/ModelTC/LightLLM/pull/1034}{\#1034}}}
+
+\EntryTitle{2024 National Computer System Design Competition, Loongson Cup CPU Track - 4th Place / Second Prize}{Jul 2024-Aug 2024}
+\BulletLine{Implemented a \textbf{13-stage out-of-order dual-issue superscalar processor} supporting LoongArch32R except floating point, with branch prediction, L1 Cache, and TLB; booted Linux, reached \textbf{80 MHz} on FPGA, achieved average IPC of \textbf{1.02}, and placed 4th nationally.}
+\BulletLine{Owned key backend modules and integration in a four-person team, including \textbf{ALU/LSU/MDU Issue Queues, Commit logic, and memory-access state machines}.}
+\BulletLine{Repository: \underline{\href{https://github.com/zhhangBian/BOOM_chip}{BOOM\_chip}}}
+
+\SectionBar{Honors and Awards}
+\BodyLine{\textbf{First Prize, China Undergraduate Mathematical Contest in Modeling}; 4th Place / Second Prize, Loongson Cup CPU Track; First Prize, Physics Competition}
+\BodyLine{AVIC Scholarship; BUAA Academic Excellence Scholarship, First Prize; Competition Scholarship, Top Prize; Innovation and Entrepreneurship Scholarship, Second Prize}
+
+\SectionBar{Languages and Skills}
+\BodyLine{English: \textbf{CET-6: 589}}
+\BodyLine{Blog: \underline{\href{https://zhhangbian.github.io/}{https://zhhangbian.github.io/}}}
+\BodyLine{Technical: \textbf{Python / C++ / CUDA / SystemVerilog}; familiar with LLM serving, distributed inference, processor design, and reinforcement-learning experiment platforms.}
+\BodyLine{Engineering: maintained the \textbf{BUAA Computer Organization teaching system}; experienced in Linux operations, full-stack development, and experiment platform construction.}

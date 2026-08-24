@@ -1,0 +1,100 @@
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage[table]{xcolor}
+
+\ctexset{section={format=\Large\bfseries}}
+\setmainfont{Arial}
+\setsansfont{Arial}
+\IfFontExistsTF{Microsoft YaHei}{
+  \setCJKmainfont[
+    AutoFakeSlant=0.18
+  ]{Microsoft YaHei}
+  \setCJKsansfont[
+    AutoFakeSlant=0.18
+  ]{Microsoft YaHei}
+}{
+  \setCJKmainfont[
+    BoldFont={Hiragino Sans GB W6},
+    AutoFakeSlant=0.18
+  ]{Hiragino Sans GB}
+  \setCJKsansfont[
+    BoldFont={Hiragino Sans GB W6},
+    AutoFakeSlant=0.18
+  ]{Hiragino Sans GB}
+}
+
+\hypersetup{
+  hidelinks
+}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\emergencystretch}{1.4em}
+\renewcommand{\arraystretch}{0.98}
+\setlist[itemize]{leftmargin=1.4em,itemsep=0.15em,topsep=0.2em,parsep=0pt,partopsep=0pt}
+
+\definecolor{accent}{HTML}{3C63A8}
+\definecolor{ruleblue}{HTML}{7EA0DE}
+\definecolor{textfg}{HTML}{111111}
+\definecolor{muted}{HTML}{333333}
+
+\newcommand{\Name}[1]{%
+  {\centering\fontsize{21.5}{23}\selectfont\bfseries #1\par}
+}
+
+\newcommand{\Subtitle}[1]{%
+  {\centering\fontsize{9.9}{11.1}\selectfont #1\par}
+}
+
+\newcommand{\SectionBar}[1]{%
+  \vspace{0.5em}
+  \par\addvspace{0.28em}
+  {\fontsize{14.6}{16}\selectfont\bfseries\color{accent} #1}\par
+  \vspace{-1em}
+  {\color{ruleblue}\rule{\linewidth}{0.55pt}}\par
+  \vspace{0.12em}
+}
+
+\newcommand{\EntryTitle}[2]{%
+  \vspace{0.1em}
+  \noindent{%
+    \fontsize{10.45}{11.8}\selectfont
+    \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash\bfseries}X>{\raggedleft\arraybackslash\itshape\color{muted}}p{3.45cm}@{}}
+      #1 & \mbox{#2}
+    \end{tabularx}\par
+  }%
+  \vspace{0.1em}
+}
+
+\newcommand{\BodyLine}[1]{%
+  {\fontsize{9.45}{10.75}\selectfont #1\par}
+}
+
+\newcommand{\BoldLine}[1]{%
+  {\fontsize{9.45}{10.75}\selectfont\bfseries #1\par}
+}
+
+\newcommand{\BulletLine}[1]{%
+  {\fontsize{9.45}{10.75}\selectfont
+  \hangindent=1.05em\hangafter=1\noindent\hspace*{0.1em}$\bullet$~#1\par}
+}
+
+\newcommand{\LinkLine}[1]{%
+  {\fontsize{9.45}{10.75}\selectfont\bfseries #1\par}
+}
+
+\newcommand{\TightSpace}{\vspace{0.02em}}
+
+\newcommand{\ResumeContent}[1]{%
+  \begin{document}
+  \color{textfg}
+  \input{#1}
+  \end{document}
+}
