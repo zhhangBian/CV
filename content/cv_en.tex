@@ -1,6 +1,6 @@
 \Name{Zhuohang Bian}
 \vspace{0em}
-\Subtitle{Beihang University | Computer Science and Technology}
+\Subtitle{Peking University | School of Integrated Circuits | Ph.D. Student}
 \vspace{0.06em}
 
 \noindent\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{0.55em}}>{\raggedleft\arraybackslash}p{2.45cm}@{}}
@@ -9,7 +9,7 @@
 \SectionBar{Profile}
 \BodyLine{Phone / WeChat: 13656160098 \hspace{4em} Email: \underline{\href{mailto:bianzhuohang26@stu.pku.edu.cn}{bianzhuohang26@stu.pku.edu.cn}}}
 \BoldLine{B.Eng.: Beihang University - School of Computer Science and Engineering - Computer Science and Technology (2022-2026)}
-\BoldLine{Incoming Ph.D.: Peking University - School of Integrated Circuits - Electronic Design Automation and Computing Systems (2026-)}
+\BoldLine{Ph.D.: Peking University - School of Integrated Circuits - Electronic Design Automation and Computing Systems (2026-)}
 \end{minipage}
 &
 \vspace*{-2em}
@@ -17,23 +17,25 @@
 \end{tabularx}
 
 \SectionBar{Summary}
-\BodyLine{Research and engineering focus at the intersection of systems and AI, with hands-on work in LLM inference systems and computer architecture. Comfortable working across the stack from algorithms to systems implementation.}
+\BodyLine{Research focus on LLM inference systems and computer architecture, with current work on KV cache management and scheduling for multi-agent applications. Experienced across workload analysis, system design, implementation, and evaluation.}
 \BulletLine{\textbf{Undergraduate major rank: 19/239 (top 10\%); average score: 92.54; GPA: 3.86/4}}
 \BulletLine{\textbf{Selected core courses:} Object-Oriented Programming 100, Intelligent Computing Architecture 99, Probability and Statistics 99, Data Mining 97, Computer Organization 95\ldots}
 \BulletLine{Advanced TA for \textbf{Computer Organization} and TA for \textbf{Operating Systems} at BUAA School of Computer Science; \uline{\href{https://github.com/zhhangBian/Compiler-Techniques}{compiler course project}} adopted as teaching example in national compiler-course teacher training.}
 
 \SectionBar{Research Experience}
-\EntryTitle{
-Peking University, School of Integrated Circuits \quad
-Prof. Youwei Zhuo's Group \quad
-Agent Systems
-}{Feb 2025-Present}
+\ResearchFocus{Primary Focus: Multi-Agent LLM Inference Systems}{Peking University · Zhuo Lab · Feb 2025--Present}
 
-\BulletLine{First-authored \textbf{\uline{\href{https://arxiv.org/abs/2604.03143}{TokenDance}}}: addressed KV cache redundancy caused by All-Gather in multi-agent LLM serving with \textbf{round-level collective KV reuse} and \textbf{block-sparse diff storage}; supported \textbf{2.7$\times$} more concurrent agents than vLLM + prefix caching and improved prefill throughput by \textbf{1.9$\times$}.}
+\ProjectTitle{\uline{\href{https://arxiv.org/abs/2510.18586}{TokenCake}}: KV Cache Scheduling for Multi-Agent Applications}{First Author · EuroSys 2027}
+\BulletLine{Identified \textbf{temporal idleness} during function calls and \textbf{spatial contention} under concurrent agents, including critical-path caches being displaced by non-critical tasks.}
+\BulletLine{Designed agent-aware \textbf{Time/Space Schedulers} with proactive offload, predictive upload, and dynamic memory partitioning; reduced end-to-end latency by \textbf{47.06\%} over vLLM and improved effective GPU KV cache utilization by \textbf{16.9\%}.}
 
-\BulletLine{First-authored \textbf{\uline{\href{https://arxiv.org/abs/2510.18586}{TokenCake}}} (accepted to \textbf{EuroSys 2027}): targeted KV cache \textbf{temporal idleness} and \textbf{spatial contention} in function-calling workloads; designed an agent-aware Time/Space Scheduler with proactive offload, predictive upload, and dynamic memory partitioning; reduced end-to-end latency by \textbf{47.06\%} over vLLM and improved effective GPU KV cache utilization by \textbf{16.9\%}.}
+\ProjectTitle{\uline{\href{https://arxiv.org/abs/2604.03143}{TokenDance}}: Collective KV Cache Reuse and Compression}{First Author · Preprint}
+\BulletLine{Characterized the All-Gather pattern in synchronous multi-round interactions, where position shifts prevent request-level prefix caching from exploiting shared outputs and create redundant computation and memory use.}
+\BulletLine{Designed a \textbf{KV Collector} and \textbf{Diff-Aware Storage} for round-level collective reuse and block-sparse differential storage; achieved \textbf{11--17$\times$} compression, \textbf{2.7$\times$} more concurrent agents, and \textbf{1.9$\times$} faster prefill.}
 
-\BulletLine{Second author on \textbf{\uline{\href{https://arxiv.org/abs/2503.08415}{TokenSim}}}, an LLM inference simulator. Built a software/hardware co-simulator for dynamic LLM serving with \textbf{scheduler and memory-manager simulation} and \textbf{prefill-decode disaggregation exploration}; simulation error was \textbf{below 1\%} on real workloads.}
+\ProjectTitle{\uline{\href{https://arxiv.org/abs/2503.08415}{TokenSim}}: Hardware/Software Simulator for LLM Inference}{Second Author · APPT 2025}
+\BulletLine{Co-developed a modular simulator for dynamic real-world workloads with extensible \textbf{scheduling, memory management, and operator-level performance models}, reporting latency distributions and time-varying memory usage.}
+\BulletLine{Validated simulation error at \textbf{below 1\%} against real systems and enabled design-space studies of P/D disaggregation, heterogeneous hardware selection, memory quotas, and long-conversation memory pools.}
 
 \vspace{0.5em}
 
@@ -59,7 +61,6 @@ High-Performance Computing
 \BulletLine{Handled operator registration with PyTorch 1.8 C++ extensions and performance tuning/evaluation on MT-3000; completed the Linear operator implementation.}
 \BulletLine{Outstanding Paper, HPC China 2024: Multi-Head Attention Optimization on the MT-3000 Processor.}
 
-\newpage
 \SectionBar{Projects}
 \EntryTitle{SenseTime Internship - \uline{\href{https://github.com/ModelTC/LightLLM}{LightLLM}} LLM Inference Acceleration Framework}{Jun 2025-Oct 2025}
 \BodyLine{Developed algorithms and framework components for LLM inference systems on \uline{LightLLM}; merged \textbf{6 public PRs}, focusing on \textbf{prefill-decode disaggregated scheduling, KV cache migration, and multimodal model support}.}
@@ -74,11 +75,17 @@ High-Performance Computing
 \BulletLine{Repository: \underline{\href{https://github.com/zhhangBian/BOOM_chip}{BOOM\_chip}}}
 
 \SectionBar{Honors and Awards}
-\BodyLine{\textbf{First Prize, China Undergraduate Mathematical Contest in Modeling}; 4th Place / Second Prize, Loongson Cup CPU Track; First Prize, Physics Competition}
-\BodyLine{AVIC Scholarship; BUAA Academic Excellence Scholarship, First Prize; Competition Scholarship, Top Prize; Innovation and Entrepreneurship Scholarship, Second Prize}
+\AwardRow{\textbf{Outstanding Graduate of Beijing} (2026)}{\textbf{AVIC Scholarship}; Qisan Medal Scholarship}
+\AwardRow{\textbf{First Prize}, CUMCM (National, 2024)}{\textbf{4th Place / Second Prize}, Loongson Cup (2024)}
+\AwardRow{\textbf{Meritorious Winner}, MCM (2024)}{\textbf{Second Prize}, NSCSCC (2025)}
+\AwardRow{\textbf{First Prize}, Beijing Physics Competition (2023)}{\textbf{Outstanding Student Leader}, BUAA (2023--2025)}
+\AwardRow{BUAA Academic Excellence First Prize; Competition Top Prize}{BUAA Innovation Second Prize; Outstanding League Cadre; Outstanding Student}
 
 \SectionBar{Languages and Skills}
-\BodyLine{English: \textbf{CET-6: 589}}
-\BodyLine{Blog: \underline{\href{https://zhhangbian.github.io/}{https://zhhangbian.github.io/}}}
-\BodyLine{Technical: \textbf{Python / C++ / CUDA / SystemVerilog}; familiar with LLM serving, distributed inference, processor design, and reinforcement-learning experiment platforms.}
-\BodyLine{Engineering: maintained the \textbf{BUAA Computer Organization teaching system}; experienced in Linux operations, full-stack development, and experiment platform construction.}
+\SkillsGrid{
+\textbf{English:} CET-6: 589\\
+\textbf{Homepage:} \underline{\href{https://zhhangbian.github.io/}{zhhangbian.github.io}}
+}{
+\textbf{Programming:} Python / C++ / CUDA / SystemVerilog\\
+\textbf{Systems:} LLM serving, distributed inference, processor design, reinforcement-learning platforms; maintained the BUAA Computer Organization teaching system.
+}

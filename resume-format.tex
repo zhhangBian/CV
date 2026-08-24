@@ -1,4 +1,4 @@
-\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage[a4paper,top=1.6cm,bottom=1.6cm,left=1.7cm,right=1.7cm]{geometry}
 \usepackage{array}
 \usepackage{enumitem}
 \usepackage{graphicx}
@@ -57,54 +57,102 @@
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \setlength{\tabcolsep}{0pt}
-\setlength{\emergencystretch}{1.4em}
-\renewcommand{\arraystretch}{0.98}
+\setlength{\emergencystretch}{1.6em}
+\renewcommand{\arraystretch}{1.02}
 \setlist[itemize]{leftmargin=1.4em,itemsep=0.15em,topsep=0.2em,parsep=0pt,partopsep=0pt}
 
-\definecolor{accent}{HTML}{3C63A8}
-\definecolor{ruleblue}{HTML}{7EA0DE}
-\definecolor{textfg}{HTML}{111111}
-\definecolor{muted}{HTML}{333333}
+\definecolor{accent}{HTML}{24558A}
+\definecolor{accentdark}{HTML}{183B61}
+\definecolor{accentlight}{HTML}{EEF4FA}
+\definecolor{ruleblue}{HTML}{9CB8D5}
+\definecolor{textfg}{HTML}{18212B}
+\definecolor{muted}{HTML}{55616E}
 
 \newcommand{\Name}[1]{%
-  {\centering\fontsize{21.5}{23}\selectfont\bfseries #1\par}
+  {\centering\fontsize{22.5}{24}\selectfont\bfseries\color{accentdark} #1\par}
 }
 
 \newcommand{\Subtitle}[1]{%
-  {\centering\fontsize{9.9}{11.1}\selectfont #1\par}
+  {\centering\fontsize{10.1}{11.4}\selectfont\color{muted} #1\par}
 }
 
 \newcommand{\SectionBar}[1]{%
-  \vspace{0.5em}
-  \par\addvspace{0.28em}
-  {\fontsize{14.6}{16}\selectfont\bfseries\color{accent} #1}\par
-  \vspace{-1em}
+  \vspace{0.42em}
+  \par\addvspace{0.22em}
+  \noindent{\color{accent}\rule{3.2pt}{1.05em}}\hspace{0.42em}%
+  {\fontsize{14.2}{15.6}\selectfont\bfseries\color{accent} #1}\par
+  \vspace{-0.36em}
   {\color{ruleblue}\rule{\linewidth}{0.55pt}}\par
-  \vspace{0.12em}
+  \vspace{0.18em}
 }
 
 \newcommand{\EntryTitle}[2]{%
-  \vspace{0.1em}
+  \vspace{0.16em}
   \noindent{%
-    \fontsize{10.45}{11.8}\selectfont
-    \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash\bfseries}X>{\raggedleft\arraybackslash\itshape\color{muted}}p{3.45cm}@{}}
+    \fontsize{10.35}{11.7}\selectfont
+    \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash\bfseries\color{accentdark}}X>{\raggedleft\arraybackslash\itshape\color{muted}}p{3.45cm}@{}}
       #1 & \mbox{#2}
     \end{tabularx}\par
   }%
   \vspace{0.1em}
 }
 
+\newcommand{\ResearchFocus}[2]{%
+  \vspace{0.12em}
+  \begingroup
+  \setlength{\fboxsep}{0.5em}%
+  \noindent\colorbox{accentlight}{%
+    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
+      \fontsize{10.25}{11.7}\selectfont
+      \textbf{\color{accentdark}#1}\hfill{\color{muted}#2}%
+    }%
+  }\par
+  \endgroup
+  \vspace{0.18em}
+}
+
+\newcommand{\ProjectTitle}[2]{%
+  \vspace{0.18em}
+  \noindent{%
+    \fontsize{10.35}{11.7}\selectfont
+    \begin{tabularx}{\linewidth}{@{}p{0.1cm}@{\hspace{0.42em}}>{\raggedright\arraybackslash\bfseries\color{accentdark}}X>{\raggedleft\arraybackslash\itshape\color{muted}}p{3.15cm}@{}}
+      {\color{accent}\rule{2.2pt}{1.02em}} & #1 & #2
+    \end{tabularx}\par
+  }%
+  \vspace{0.06em}
+}
+
 \newcommand{\BodyLine}[1]{%
-  {\fontsize{9.45}{10.75}\selectfont #1\par}
+  {\fontsize{9.4}{10.9}\selectfont #1\par}
 }
 
 \newcommand{\BoldLine}[1]{%
-  {\fontsize{9.45}{10.75}\selectfont\bfseries #1\par}
+  {\fontsize{9.4}{10.9}\selectfont\bfseries #1\par}
 }
 
 \newcommand{\BulletLine}[1]{%
-  {\fontsize{9.45}{10.75}\selectfont
-  \hangindent=1.05em\hangafter=1\noindent\hspace*{0.1em}$\bullet$~#1\par}
+  {\fontsize{9.4}{10.9}\selectfont
+  \hangindent=1.08em\hangafter=1\noindent\hspace*{0.08em}{\color{accent}$\bullet$}\hspace{0.32em}#1\par}
+}
+
+\newcommand{\AwardRow}[2]{%
+  \noindent{\fontsize{9.15}{10.6}\selectfont
+    \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{1.1em}}>{\raggedright\arraybackslash}X@{}}
+      {\color{accent}\textbullet}\hspace{0.35em}#1 & {\color{accent}\textbullet}\hspace{0.35em}#2
+    \end{tabularx}\par
+  }%
+  \vspace{0.08em}
+}
+
+\newcommand{\SkillsGrid}[2]{%
+  \noindent{\fontsize{9.1}{10.45}\selectfont
+    \begin{minipage}[t]{0.29\linewidth}
+      \raggedright #1
+    \end{minipage}\hfill%
+    \begin{minipage}[t]{0.68\linewidth}
+      \raggedright #2
+    \end{minipage}\par
+  }%
 }
 
 \newcommand{\LinkLine}[1]{%

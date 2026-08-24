@@ -1,6 +1,6 @@
 \Name{卞卓航}
 \vspace{0em}
-\Subtitle{北京航空航天大学 | 计算机科学与技术}
+\Subtitle{北京大学 | 集成电路学院 | 电子设计自动化与计算系统}
 \vspace{0.06em}
 
 \noindent\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{0.55em}}>{\raggedleft\arraybackslash}p{2.45cm}@{}}
@@ -18,23 +18,25 @@
 \end{tabularx}
 
 \SectionBar{个人简述}
-\BodyLine{聚焦系统与智能交叉方向，持续在 LLM 推理系统、体系结构上开展研究与工程实践，具备从算法到系统实现的跨栈能力。}
+\BodyLine{聚焦 LLM 推理系统与体系结构，当前主要研究多智能体应用中的 KV Cache 管理与调度，具备从工作负载分析、系统设计到框架实现与评测的跨栈能力。}
 \BulletLine{\textbf{本科专业排名 19/239（前10\%）；均分 92.54，GPA 3.86/4}}
 \BulletLine{\textbf{核心专业课程成绩（部分）：} 面向对象100，智能计算体系结构99，概率统计99，数据挖掘97，计算机组成95\ldots}
 \BulletLine{担任北航计算机学院\textbf{计算机组成课程高阶助教、操作系统课程助教}；\uline{\href{https://github.com/zhhangBian/Compiler-Techniques}{编译课程大作业}}为\textbf{全国教师培训实例代码}}
 
 \SectionBar{科研经历}
-\EntryTitle{
-北大集成电路学院 \quad
-卓有为助理教授团队 \quad
-Agent系统方向
-}{2025.2-至今}
+\ResearchFocus{主要研究方向：多智能体 LLM 推理系统}{北大集成电路学院 · 卓有为助理教授团队 · 2025.2--至今}
 
-\BulletLine{第一作者完成 \textbf{\uline{\href{https://arxiv.org/abs/2604.03143}{TokenDance}}}：针对多智能体 LLM Serving 中 All-Gather 造成的 KV Cache 冗余，设计\textbf{轮级 collective KV 复用}与\textbf{block-sparse diff 存储}；并发 agent 数较 vLLM + prefix caching 提升 \textbf{2.7$\times$}，prefill 速度提升 \textbf{1.9$\times$}。}
+\ProjectTitle{\uline{\href{https://arxiv.org/abs/2510.18586}{TokenCake}}：面向多智能体应用的 KV Cache 调度}{第一作者 · EuroSys 2027}
+\BulletLine{针对 Function Call 场景中 KV Cache 的\textbf{时间空转}与多 Agent 并发带来的\textbf{空间争用}，抽象应用内部依赖与工具调用，识别关键路径缓存被非关键任务挤占的问题。}
+\BulletLine{设计 agent-aware 的 \textbf{Time/Space Scheduler}，结合主动 offload、predictive upload 与动态内存分区；端到端时延较 vLLM 降低 \textbf{47.06\%}，有效 GPU KV Cache 利用率提升 \textbf{16.9\%}。}
 
-\BulletLine{第一作者完成 \textbf{\uline{\href{https://arxiv.org/abs/2510.18586}{TokenCake}}}（已被 \textbf{EuroSys 2027} 接收）：针对 Function Call 场景下 KV Cache 的\textbf{时间空转}与\textbf{空间争用}问题，设计 agent-aware 的 Time/Space Scheduler，结合主动 offload、predictive upload 与动态内存分区；端到端时延较 vLLM 降低 \textbf{47.06\%}，有效 GPU KV Cache 利用率提升 \textbf{16.9\%}。}
+\ProjectTitle{\uline{\href{https://arxiv.org/abs/2604.03143}{TokenDance}}：多智能体 KV Cache 集体复用与压缩}{第一作者 · Preprint}
+\BulletLine{面向同步多轮交互中的 All-Gather 模式，发现共享输出在不同 Agent 上因位置偏移而无法被请求级前缀缓存有效复用，导致重复计算与显存冗余。}
+\BulletLine{设计 \textbf{KV Collector} 与 \textbf{Diff-Aware Storage}，实现轮级 collective KV 复用和 block-sparse 差分存储；典型负载压缩 \textbf{11--17$\times$}，并发 Agent 数提升 \textbf{2.7$\times$}，prefill 加速 \textbf{1.9$\times$}。}
 
-\BulletLine{第二作者参与 \textbf{\uline{\href{https://arxiv.org/abs/2503.08415}{TokenSim}}}：LLM推理模拟器。面向动态 LLM Serving 构建支持\textbf{调度器/内存管理器模拟、PD 分离探索}的软硬件联合模拟器；在真实工作负载上的仿真误差\textbf{低于 1\%}。}
+\ProjectTitle{\uline{\href{https://arxiv.org/abs/2503.08415}{TokenSim}}：LLM 推理系统软硬件联合模拟器}{第二作者 · APPT 2025}
+\BulletLine{参与构建面向动态真实工作负载的模块化模拟器，支持可扩展的\textbf{调度器、内存管理器与算子级性能建模}，输出时延分布和随时间变化的显存占用。}
+\BulletLine{基于真实系统验证仿真误差\textbf{低于 1\%}；支撑 PD 分离、异构硬件选择、显存配额与长对话内存池等软硬件设计空间探索。}
 
 \vspace{0.5em}
 
@@ -48,7 +50,7 @@ Agent系统方向
 \BulletLine{负责参与攻击算法与实验流水线实现、参与结果分析及论文撰写，围绕 cooperation / resilience 的关系展开研究；}
 \BulletLine{NeurIPS 2025论文：\underline{\href{https://arxiv.org/abs/2510.11824}{arXiv:2510.11824}}}
 
-\vspace{0.5em}
+\newpage
 
 \EntryTitle{
 北航中德联合软件研究所 \quad
@@ -74,8 +76,11 @@ Agent系统方向
 \BulletLine{仓库链接：\underline{\href{https://github.com/zhhangBian/BOOM_chip}{https://github.com/zhhangBian/BOOM\_chip}}}
 
 \SectionBar{荣誉奖项}
-\BodyLine{\textbf{全国大学生数学建模竞赛全国一等奖}，计算机系统能力大赛CPU赛道（龙芯杯）全国第四，物理竞赛一等奖}
-\BodyLine{航空工业奖学金、北航学习优秀奖学金一等奖、竞赛奖学金特等奖、创新创业二等奖、“七三奖章”奖学金}
+\AwardRow{\textbf{北京市优秀毕业生}（2026）}{\textbf{航空工业奖学金}}
+\AwardRow{全国大学生数学建模竞赛\textbf{全国一等奖}（2024）}{计算机系统能力大赛 CPU 赛道\textbf{全国第四/二等奖}（2024）}
+\AwardRow{美国大学生数学建模竞赛\textbf{一等奖/Meritorious Winner}（2024）}{全国大学生计算机系统能力大赛\textbf{全国二等奖}（2025）}
+\AwardRow{北京市大学生物理竞赛\textbf{一等奖}（2023）}{北航\textbf{优秀学生干部}（2023--2025）}
+\AwardRow{学习优秀一等奖、竞赛特等奖、创新创业二等奖}{优秀团干部、优秀学生、“七三奖章”奖学金}
 
 \SectionBar{语言与技能}
 \BodyLine{语言：\textbf{CET-6：589}}
