@@ -9,8 +9,13 @@
 \usepackage[table]{xcolor}
 
 \ctexset{section={format=\Large\bfseries}}
-\setmainfont{Arial}
-\setsansfont{Arial}
+\IfFontExistsTF{Arial}{
+  \setmainfont{Arial}
+  \setsansfont{Arial}
+}{
+  \setmainfont{TeX Gyre Heros}
+  \setsansfont{TeX Gyre Heros}
+}
 \IfFontExistsTF{Microsoft YaHei}{
   \setCJKmainfont[
     AutoFakeSlant=0.18
@@ -19,14 +24,30 @@
     AutoFakeSlant=0.18
   ]{Microsoft YaHei}
 }{
-  \setCJKmainfont[
-    BoldFont={Hiragino Sans GB W6},
-    AutoFakeSlant=0.18
-  ]{Hiragino Sans GB}
-  \setCJKsansfont[
-    BoldFont={Hiragino Sans GB W6},
-    AutoFakeSlant=0.18
-  ]{Hiragino Sans GB}
+  \IfFontExistsTF{Noto Sans CJK SC}{
+    \setCJKmainfont[AutoFakeSlant=0.18]{Noto Sans CJK SC}
+    \setCJKsansfont[AutoFakeSlant=0.18]{Noto Sans CJK SC}
+  }{
+    \IfFontExistsTF{Hiragino Sans GB}{
+      \setCJKmainfont[
+        BoldFont={Hiragino Sans GB W6},
+        AutoFakeSlant=0.18
+      ]{Hiragino Sans GB}
+      \setCJKsansfont[
+        BoldFont={Hiragino Sans GB W6},
+        AutoFakeSlant=0.18
+      ]{Hiragino Sans GB}
+    }{
+      \setCJKmainfont[
+        BoldFont={FandolHei-Bold.otf},
+        AutoFakeSlant=0.18
+      ]{FandolHei-Regular.otf}
+      \setCJKsansfont[
+        BoldFont={FandolHei-Bold.otf},
+        AutoFakeSlant=0.18
+      ]{FandolHei-Regular.otf}
+    }
+  }
 }
 
 \hypersetup{

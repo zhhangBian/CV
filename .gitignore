@@ -17,6 +17,7 @@ main.*
 !cv.tex
 
 *.sh
+!make.sh
 *.log
 *.aux
 *.out
