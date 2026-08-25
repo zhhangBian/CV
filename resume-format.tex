@@ -77,24 +77,23 @@
 }
 
 \newcommand{\SectionBar}[1]{%
-  \vspace{0.42em}
-  \par\addvspace{0.22em}
+  \par\addvspace{0.48em}
   \noindent{\color{accent}\rule{3.2pt}{1.05em}}\hspace{0.42em}%
   {\fontsize{14.2}{15.6}\selectfont\bfseries\color{accent} #1}\par
-  \vspace{-0.36em}
-  {\color{ruleblue}\rule{\linewidth}{0.55pt}}\par
-  \vspace{0.18em}
+  \vspace{0.04em}
+  {\color{ruleblue}\hrule height 0.55pt}
+  \vspace{0.2em}
 }
 
 \newcommand{\EntryTitle}[2]{%
-  \vspace{0.16em}
+  \vspace{0.06em}
   \noindent{%
     \fontsize{10.35}{11.7}\selectfont
     \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash\bfseries\color{accentdark}}X>{\raggedleft\arraybackslash\itshape\color{muted}}p{3.45cm}@{}}
       #1 & \mbox{#2}
     \end{tabularx}\par
   }%
-  \vspace{0.1em}
+  \vspace{-0.02em}
 }
 
 \newcommand{\ResearchFocus}[2]{%
@@ -108,18 +107,18 @@
     }%
   }\par
   \endgroup
-  \vspace{0.18em}
+  \vspace{0.06em}
 }
 
 \newcommand{\ProjectTitle}[2]{%
-  \vspace{0.18em}
+  \vspace{0.1em}
   \noindent{%
     \fontsize{10.35}{11.7}\selectfont
-    \begin{tabularx}{\linewidth}{@{}p{0.1cm}@{\hspace{0.42em}}>{\raggedright\arraybackslash\bfseries\color{accentdark}}X>{\raggedleft\arraybackslash\itshape\color{muted}}p{3.15cm}@{}}
+    \begin{tabularx}{\linewidth}{@{}p{0.1cm}@{\hspace{0.42em}}>{\raggedright\arraybackslash\bfseries\color{accentdark}}X>{\raggedleft\arraybackslash\itshape\color{muted}\fontsize{9.65}{10.8}\selectfont}p{4.55cm}@{}}
       {\color{accent}\rule{2.2pt}{1.02em}} & #1 & #2
     \end{tabularx}\par
   }%
-  \vspace{0.06em}
+  \vspace{-0.02em}
 }
 
 \newcommand{\BodyLine}[1]{%
@@ -135,13 +134,11 @@
   \hangindent=1.08em\hangafter=1\noindent\hspace*{0.08em}{\color{accent}$\bullet$}\hspace{0.32em}#1\par}
 }
 
-\newcommand{\AwardRow}[2]{%
-  \noindent{\fontsize{9.15}{10.6}\selectfont
-    \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{1.1em}}>{\raggedright\arraybackslash}X@{}}
-      {\color{accent}\textbullet}\hspace{0.35em}#1 & {\color{accent}\textbullet}\hspace{0.35em}#2
-    \end{tabularx}\par
+\newcommand{\AwardItem}[1]{%
+  {\fontsize{9.15}{10.45}\selectfont
+    \hangindent=1.08em\hangafter=1\noindent\hspace*{0.08em}%
+    {\color{accent}\textbullet}\hspace{0.32em}#1\par
   }%
-  \vspace{0.08em}
 }
 
 \newcommand{\SkillsGrid}[2]{%
