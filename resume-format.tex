@@ -80,13 +80,13 @@
   \par\addvspace{0.48em}
   \noindent{\color{accent}\rule{3.2pt}{1.05em}}\hspace{0.42em}%
   {\fontsize{14.2}{15.6}\selectfont\bfseries\color{accent} #1}\par
-  \vspace{0.04em}
-  {\color{ruleblue}\hrule height 0.55pt}
   \vspace{0.2em}
+  {\color{ruleblue}\hrule height 0.55pt}
+  \vspace{0.6em}
 }
 
 \newcommand{\EntryTitle}[2]{%
-  \vspace{0.06em}
+  \vspace{-0.3em}
   \noindent{%
     \fontsize{10.35}{11.7}\selectfont
     \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash\bfseries\color{accentdark}}X>{\raggedleft\arraybackslash\itshape\color{muted}}p{3.45cm}@{}}
@@ -111,14 +111,14 @@
 }
 
 \newcommand{\ProjectTitle}[2]{%
-  \vspace{0.1em}
+  \vspace{-0.5em}
   \noindent{%
     \fontsize{10.35}{11.7}\selectfont
-    \begin{tabularx}{\linewidth}{@{}p{0.1cm}@{\hspace{0.42em}}>{\raggedright\arraybackslash\bfseries\color{accentdark}}X>{\raggedleft\arraybackslash\itshape\color{muted}\fontsize{9.65}{10.8}\selectfont}p{4.55cm}@{}}
-      {\color{accent}\rule{2.2pt}{1.02em}} & #1 & #2
+    \begin{tabularx}{\linewidth}{@{}p{0.1cm}@{\hspace{0.4em}}>{\raggedright\arraybackslash\bfseries\color{accentdark}}X>{\raggedleft\arraybackslash\itshape\color{muted}\fontsize{9.65}{10.8}\selectfont}p{4.55cm}@{}}
+      {\color{accent}\rule[-0.16em]{2.2pt}{1.02em}} & #1 & #2
     \end{tabularx}\par
   }%
-  \vspace{-0.02em}
+  \vspace{0.1em}
 }
 
 \newcommand{\BodyLine}[1]{%
