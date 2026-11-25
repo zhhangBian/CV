@@ -1,166 +1,210 @@
-\usepackage[a4paper,top=1.6cm,bottom=1.6cm,left=1.7cm,right=1.7cm]{geometry}
-\usepackage{array}
-\usepackage{enumitem}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage[normalem]{ulem}
-\usepackage{tabularx}
-\usepackage{tikz}
-\usepackage[table]{xcolor}
+% ============================================================================
+% Shared resume template (Chinese and English).
+%
+% Content files only use the semantic macros in the "Content API" section
+% below. Never add \vspace, colors or font sizes inside content files: change
+% the design tokens here instead, and both language versions follow.
+% ============================================================================
 
-\ctexset{section={format=\Large\bfseries}}
-\IfFontExistsTF{Arial}{
-  \setmainfont{Arial}
-  \setsansfont{Arial}
-}{
-  \setmainfont{TeX Gyre Heros}
-  \setsansfont{TeX Gyre Heros}
+\usepackage[a4paper,top=1.45cm,bottom=1.6cm,left=1.75cm,right=1.75cm]{geometry}
+\usepackage{graphicx}
+\usepackage{xparse}
+\usepackage{needspace}
+\usepackage{fancyhdr}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+
+% ---------------------------------------------------------------------------
+% Design tokens
+% ---------------------------------------------------------------------------
+
+% Colors: one accent (section titles and links), everything else is neutral.
+\definecolor{ink}{HTML}{1B1F24}
+\definecolor{muted}{HTML}{5E6672}
+\definecolor{rulecolor}{HTML}{CDD3DB}
+\definecolor{accent}{HTML}{1F4F8A}
+
+% Spacing scale: the only vertical distances used by the template.
+\newlength{\SectionSkip}\setlength{\SectionSkip}{11pt}  % before a section
+\newlength{\SectionGap} \setlength{\SectionGap}{5pt}    % section rule -> content
+\newlength{\EntrySkip}  \setlength{\EntrySkip}{6pt}     % between entries
+\newlength{\ItemSkip}   \setlength{\ItemSkip}{1.6pt}    % between bullets
+\newlength{\BulletIndent}\setlength{\BulletIndent}{0.95em}
+
+% Type scale (size / leading). Leading is set per language in cv*.tex via
+% \SetLeading, because CJK text needs more line height than Latin text.
+\newcommand{\BodyLeading}{12.6pt}
+\newcommand{\SetLeading}[1]{\renewcommand{\BodyLeading}{#1}}
+\newcommand{\BodyFont}{\fontsize{10}{\BodyLeading}\selectfont}
+\newcommand{\MetaFont}{\fontsize{9.3}{\BodyLeading}\selectfont\color{muted}}
+\newcommand{\EntryFont}{\fontsize{10.3}{\BodyLeading}\selectfont\bfseries\color{ink}}
+\newcommand{\SectionFont}{\fontsize{11}{13}\selectfont\bfseries\color{accent}}
+\newcommand{\NameFont}{\fontsize{23}{26}\selectfont\bfseries\color{ink}}
+\newcommand{\TaglineFont}{\fontsize{10.5}{13}\selectfont\color{muted}}
+\newcommand{\ContactFont}{\fontsize{9.3}{12}\selectfont\color{muted}}
+
+% Section-title casing hook: English uppercases with tracking, Chinese keeps
+% the text as is. Set in cv_en.tex / cv.tex.
+\newcommand{\SectionText}[1]{#1}
+
+% ---------------------------------------------------------------------------
+% Fonts: Latin font is vendored in fonts/ so local and CI builds match.
+% ---------------------------------------------------------------------------
+
+\setmainfont{SourceSans3}[
+  Path = fonts/,
+  Extension = .otf,
+  UprightFont = *-Regular,
+  ItalicFont = *-It,
+  BoldFont = *-Semibold,
+  BoldItalicFont = *-SemiboldIt,
+  Numbers = Lining,
+]
+\setsansfont{SourceSans3}[
+  Path = fonts/,
+  Extension = .otf,
+  UprightFont = *-Regular,
+  ItalicFont = *-It,
+  BoldFont = *-Semibold,
+  BoldItalicFont = *-SemiboldIt,
+  Numbers = Lining,
+]
+
+% CJK: Source Han Sans / Noto Sans CJK is the designed companion of
+% Source Sans. CI installs fonts-noto-cjk; other names are local fallbacks.
+\newcommand{\UseCJKFont}[2]{%
+  \setCJKmainfont{#1}[BoldFont = {#2}]%
+  \setCJKsansfont{#1}[BoldFont = {#2}]%
 }
-\IfFontExistsTF{Microsoft YaHei}{
-  \setCJKmainfont[
-    AutoFakeSlant=0.18
-  ]{Microsoft YaHei}
-  \setCJKsansfont[
-    AutoFakeSlant=0.18
-  ]{Microsoft YaHei}
-}{
-  \IfFontExistsTF{Noto Sans CJK SC}{
-    \setCJKmainfont[AutoFakeSlant=0.18]{Noto Sans CJK SC}
-    \setCJKsansfont[AutoFakeSlant=0.18]{Noto Sans CJK SC}
-  }{
-    \IfFontExistsTF{Hiragino Sans GB}{
-      \setCJKmainfont[
-        BoldFont={Hiragino Sans GB W6},
-        AutoFakeSlant=0.18
-      ]{Hiragino Sans GB}
-      \setCJKsansfont[
-        BoldFont={Hiragino Sans GB W6},
-        AutoFakeSlant=0.18
-      ]{Hiragino Sans GB}
-    }{
-      \setCJKmainfont[
-        BoldFont={FandolHei-Bold.otf},
-        AutoFakeSlant=0.18
-      ]{FandolHei-Regular.otf}
-      \setCJKsansfont[
-        BoldFont={FandolHei-Bold.otf},
-        AutoFakeSlant=0.18
-      ]{FandolHei-Regular.otf}
-    }
-  }
-}
+\IfFontExistsTF{Noto Sans CJK SC}{\UseCJKFont{Noto Sans CJK SC}{Noto Sans CJK SC Bold}}{%
+\IfFontExistsTF{Source Han Sans SC}{\UseCJKFont{Source Han Sans SC}{Source Han Sans SC Bold}}{%
+\IfFontExistsTF{Hiragino Sans GB}{\UseCJKFont{Hiragino Sans GB}{Hiragino Sans GB W6}}{%
+  \setCJKmainfont{FandolHei-Regular.otf}[BoldFont = FandolHei-Bold.otf]%
+  \setCJKsansfont{FandolHei-Regular.otf}[BoldFont = FandolHei-Bold.otf]%
+}}}
+
+% Typeset middle dots and dashes with the Latin font in both languages, so
+% "A · B" and date ranges get Latin spacing instead of full-width CJK spacing.
+\xeCJKDeclareCharClass{Default}{"00B7, "00D7, "2013}
+
+% ---------------------------------------------------------------------------
+% Page setup
+% ---------------------------------------------------------------------------
 
 \hypersetup{
-  hidelinks
+  colorlinks = true,
+  linkcolor = accent,
+  urlcolor = accent,
+  pdfauthor = {Zhuohang Bian},
+  pdftitle = {Zhuohang Bian - Curriculum Vitae},
 }
 
-\pagestyle{empty}
 \setlength{\parindent}{0pt}
-\setlength{\tabcolsep}{0pt}
-\setlength{\emergencystretch}{1.6em}
-\renewcommand{\arraystretch}{1.02}
-\setlist[itemize]{leftmargin=1.4em,itemsep=0.15em,topsep=0.2em,parsep=0pt,partopsep=0pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{1.5em}
+\AtBeginDocument{\linespread{1}\selectfont\raggedright}
 
-\definecolor{accent}{HTML}{24558A}
-\definecolor{accentdark}{HTML}{183B61}
-\definecolor{accentlight}{HTML}{EEF4FA}
-\definecolor{ruleblue}{HTML}{9CB8D5}
-\definecolor{textfg}{HTML}{18212B}
-\definecolor{muted}{HTML}{55616E}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\setlength{\footskip}{22pt}
 
-\newcommand{\Name}[1]{%
-  {\centering\fontsize{22.5}{24}\selectfont\bfseries\color{accentdark} #1\par}
+% ---------------------------------------------------------------------------
+% Content API
+% ---------------------------------------------------------------------------
+
+% \Footer{left text}{right text}
+\newcommand{\Footer}[2]{%
+  \fancyfoot[L]{\fontsize{8.5}{10}\selectfont\color{muted}#1}%
+  \fancyfoot[R]{\fontsize{8.5}{10}\selectfont\color{muted}#2}%
 }
 
-\newcommand{\Subtitle}[1]{%
-  {\centering\fontsize{10.1}{11.4}\selectfont\color{muted} #1\par}
-}
-
-\newcommand{\SectionBar}[1]{%
-  \par\addvspace{0.48em}
-  \noindent{\color{accent}\rule{3.2pt}{1.05em}}\hspace{0.42em}%
-  {\fontsize{14.2}{15.6}\selectfont\bfseries\color{accent} #1}\par
-  \vspace{0.2em}
-  {\color{ruleblue}\hrule height 0.55pt}
-  \vspace{0.6em}
-}
-
-\newcommand{\EntryTitle}[2]{%
-  \vspace{-0.3em}
-  \noindent{%
-    \fontsize{10.35}{11.7}\selectfont
-    \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash\bfseries\color{accentdark}}X>{\raggedleft\arraybackslash\itshape\color{muted}}p{3.45cm}@{}}
-      #1 & \mbox{#2}
-    \end{tabularx}\par
+% \Header{Name}{Tagline}{\Contact{...}\Contact{...}...}[optional photo path]
+% Separators between \Contact items are added automatically and vanish at a
+% line break; an item itself is never broken across lines.
+\newcommand{\Sep}{\hspace{0.55em}{\color{rulecolor}|}\hspace{0.55em}}
+\newcommand{\ContactSep}{}
+\newcommand{\Contact}[1]{\ContactSep\mbox{#1}\gdef\ContactSep{\discretionary{}{}{\mbox{\Sep}}}}
+\NewDocumentCommand{\Header}{m m m o}{%
+  \IfNoValueTF{#4}{%
+    \HeaderText{#1}{#2}{#3}%
+  }{%
+    \noindent
+    \begin{minipage}[b]{\dimexpr\linewidth-2.6cm\relax}\HeaderText{#1}{#2}{#3}\end{minipage}%
+    \hfill
+    \begin{minipage}[b]{2.05cm}\includegraphics[width=2.05cm]{#4}\end{minipage}\par
   }%
-  \vspace{-0.02em}
+  \vspace{2pt}%
+}
+\newcommand{\HeaderText}[3]{%
+  \raggedright
+  {\NameFont #1\par}\vspace{3pt}%
+  {\TaglineFont #2\par}\vspace{5pt}%
+  {\ContactFont #3\par}%
 }
 
-\newcommand{\ResearchFocus}[2]{%
-  \vspace{0.12em}
-  \begingroup
-  \setlength{\fboxsep}{0.5em}%
-  \noindent\colorbox{accentlight}{%
-    \parbox{\dimexpr\linewidth-2\fboxsep\relax}{%
-      \fontsize{10.25}{11.7}\selectfont
-      \textbf{\color{accentdark}#1}\hfill{\color{muted}#2}%
-    }%
-  }\par
-  \endgroup
-  \vspace{0.06em}
+% \Section{Title}
+\newcommand{\Section}[1]{%
+  \par\addvspace{\SectionSkip}%
+  \needspace{4\baselineskip}%
+  {\SectionFont\SectionText{#1}\par}%
+  \nobreak\vspace{2.5pt}%
+  {\color{rulecolor}\hrule height 0.6pt}%
+  \nobreak\vspace{\SectionGap}%
+  \BodyFont
 }
 
-\newcommand{\ProjectTitle}[2]{%
-  \vspace{-0.5em}
-  \noindent{%
-    \fontsize{10.35}{11.7}\selectfont
-    \begin{tabularx}{\linewidth}{@{}p{0.1cm}@{\hspace{0.4em}}>{\raggedright\arraybackslash\bfseries\color{accentdark}}X>{\raggedleft\arraybackslash\itshape\color{muted}\fontsize{9.65}{10.8}\selectfont}p{4.55cm}@{}}
-      {\color{accent}\rule[-0.16em]{2.2pt}{1.02em}} & #1 & #2
-    \end{tabularx}\par
-  }%
-  \vspace{0.1em}
+% \Entry{Title}{Right-aligned meta, e.g. dates}
+% The meta column has natural width, so long venues or dates never wrap
+% into a fixed-width box.
+\newcommand{\Entry}[2]{%
+  \par\addvspace{\EntrySkip}%
+  \needspace{3\baselineskip}%
+  {\EntryFont #1}\hspace{1em plus 1fill}{\MetaFont #2}\par\nobreak
+  \BodyFont
 }
 
-\newcommand{\BodyLine}[1]{%
-  {\fontsize{9.4}{10.9}\selectfont #1\par}
+% \Sub{Secondary line under an entry: role, degree, group}
+\newcommand{\Sub}[1]{{\fontsize{9.8}{\BodyLeading}\selectfont\color{muted}#1\par}\nobreak}
+
+% \Note{Plain paragraph inside an entry}
+\newcommand{\Note}[1]{{\BodyFont #1\par}}
+
+% \Item{Bullet text}
+\newcommand{\Item}[1]{%
+  \par\vspace{\ItemSkip}%
+  {\BodyFont\hangindent=\BulletIndent\hangafter=1
+   \makebox[\BulletIndent][l]{\color{muted}\textbullet}#1\par}%
 }
 
-\newcommand{\BoldLine}[1]{%
-  {\fontsize{9.4}{10.9}\selectfont\bfseries #1\par}
+% \Pub{Title}{Authors}{Venue}{Links}; wrap your own name in \Me{...}
+\newcommand{\Me}[1]{{\color{ink}\bfseries #1}}
+\newcommand{\Pub}[4]{%
+  \par\addvspace{\EntrySkip}%
+  \needspace{2\baselineskip}%
+  {\fontsize{10}{\BodyLeading}\selectfont\bfseries\color{ink}#1}\hspace{1em plus 1fill}{\MetaFont #3}\par\nobreak
+  {\MetaFont #2\ifx\relax#4\relax\else\hspace{0.5em}#4\fi\par}%
 }
 
-\newcommand{\BulletLine}[1]{%
-  {\fontsize{9.4}{10.9}\selectfont
-  \hangindent=1.08em\hangafter=1\noindent\hspace*{0.08em}{\color{accent}$\bullet$}\hspace{0.32em}#1\par}
+% \Skill{Label}{Items}
+\newcommand{\Skill}[2]{%
+  \par\vspace{\ItemSkip}%
+  {\BodyFont{\bfseries #1}\hspace{0.6em}#2\par}%
 }
 
-\newcommand{\AwardItem}[1]{%
-  {\fontsize{9.15}{10.45}\selectfont
-    \hangindent=1.08em\hangafter=1\noindent\hspace*{0.08em}%
-    {\color{accent}\textbullet}\hspace{0.32em}#1\par
-  }%
+% \Award{Award text}{Year}
+\newcommand{\Award}[2]{%
+  \par\vspace{\ItemSkip}%
+  {\BodyFont #1\hspace{1em plus 1fill}{\MetaFont #2}\par}%
 }
 
-\newcommand{\SkillsGrid}[2]{%
-  \noindent{\fontsize{9.1}{10.45}\selectfont
-    \begin{minipage}[t]{0.29\linewidth}
-      \raggedright #1
-    \end{minipage}\hfill%
-    \begin{minipage}[t]{0.68\linewidth}
-      \raggedright #2
-    \end{minipage}\par
-  }%
-}
-
-\newcommand{\LinkLine}[1]{%
-  {\fontsize{9.45}{10.75}\selectfont\bfseries #1\par}
-}
-
-\newcommand{\TightSpace}{\vspace{0.02em}}
+% \Links{...}: [Paper] [Code] style links, kept on one line
+\newcommand{\Links}[1]{\mbox{#1}}
 
 \newcommand{\ResumeContent}[1]{%
   \begin{document}
-  \color{textfg}
+  \color{ink}\BodyFont
   \input{#1}
   \end{document}
 }
