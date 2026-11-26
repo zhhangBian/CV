@@ -8,7 +8,7 @@
 - [`resume-format.tex`](resume-format.tex)：共用模板，包含设计参数（颜色、间距、字号）和内容宏
 - [`content/cv_zh.tex`](content/cv_zh.tex) / [`content/cv_en.tex`](content/cv_en.tex)：简历内容
 - [`fonts/`](fonts)：随仓库分发的 Source Sans 3（SIL OFL），本地和 CI 编译结果一致；中文使用 Noto Sans CJK SC（思源黑体）
-- [`assets/headshot.jpg`](assets/headshot.jpg)：证件照（中文版使用）
+- [`assets/headshot.jpg`](assets/headshot.jpg)：证件照（当前未使用；需要时作为 `\Header` 的可选参数传入）
 
 ## 编译
 

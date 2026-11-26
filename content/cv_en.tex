@@ -1,7 +1,7 @@
 \Footer{Zhuohang Bian · Curriculum Vitae}{\thepage}
 
 \Header{Zhuohang Bian}
-  {Ph.D. Student, Peking University · LLM Inference Systems and AI Infrastructure}
+  {Ph.D. Student, Peking University · LLM Inference Systems and Computer Architecture}
   {%
    \Contact{\href{mailto:bianzhuohang26@stu.pku.edu.cn}{bianzhuohang26@stu.pku.edu.cn}}%
    \Contact{+86 136 5616 0098}%
@@ -13,48 +13,6 @@
 \Sub{Ph.D. in Electronic Design Automation and Computing Systems}
 \Entry{Beihang University · School of Computer Science and Engineering}{2022 – 2026}
 \Sub{B.Eng. in Computer Science and Technology · GPA 3.86/4.00 · Rank 19/239 (top 10\%)}
-
-\Section{Industry Experience}
-\Entry{SenseTime · LLM Inference Systems Intern, \href{https://github.com/ModelTC/LightLLM}{LightLLM}}{Jun 2025 – Oct 2025}
-\Sub{Contributed 6 upstream pull requests: P/D-disaggregated serving, KV-cache transfer, multimodal models, observability}
-\Item{Refactored prefill/decode (P/D) node selection into extensible selectors and added \textbf{memory-aware routing} driven by predicted node load, with load reporting from each node. \href{https://github.com/ModelTC/LightLLM/pull/970}{\#970}}
-\Item{Implemented \textbf{timeout retries and KV-cache return transfers} for chunked decoding, and \textbf{CUDA/NCCL-based cross-GPU KV-cache migration} across multiple data-parallel ranks. \href{https://github.com/ModelTC/LightLLM/pull/944}{\#944} \href{https://github.com/ModelTC/LightLLM/pull/999}{\#999}}
-\Item{Integrated the \textbf{MinerU2} multimodal model end to end: tokenizer, vision modules, vision-service RPC and serving APIs. \href{https://github.com/ModelTC/LightLLM/pull/1034}{\#1034}}
-\Item{Added multimodal token-usage accounting and service-process identifiers for service observability. \href{https://github.com/ModelTC/LightLLM/pull/1011}{\#1011} \href{https://github.com/ModelTC/LightLLM/pull/1024}{\#1024}}
-
-\Section{Research Experience}
-\Entry{Peking University · Prof.~Youwei Zhuo's Group}{Feb 2025 – Present}
-\Sub{Multi-agent LLM inference systems: KV-cache scheduling, reuse and compression}
-
-\Entry{TokenCake: Agent-Aware KV-Cache Scheduling}{First author · EuroSys 2027}
-\Item{Modeled workflow dependencies and tool calls to expose KV caches that sit idle during tool execution and contention on the critical path; designed \textbf{coordinated temporal and spatial schedulers}.}
-\Item{Combined proactive offloading, predictive reloading and dynamic GPU memory partitioning, reducing end-to-end latency by \textbf{up to 47.06\%} versus vLLM in memory-constrained multi-agent workloads.}
-\Item{Raised GPU KV-cache utilization by up to \textbf{16.9 percentage points} over vLLM (Qwen2.5-14B, Code-Writer). \Links{\href{https://arxiv.org/abs/2510.18586}{[Paper]} \href{https://github.com/pku-lemonade/TokenCake}{[Code]}}}
-
-\Entry{TokenDance: Collective KV-Cache Reuse and Compression}{First author · Under review}
-\Item{Designed a \textbf{KV Collector} for round-level reuse of shared context across agents, removing the position shifts that defeat prefix caching and cause redundant prefill.}
-\Item{Designed \textbf{Diff-Aware Storage}, encoding similar KV caches as block-sparse differences for \textbf{11–17× compression}.}
-\Item{Served up to \textbf{2.7× more concurrent agents} than vLLM with prefix caching under the latency SLO, with up to \textbf{1.9× faster prefill} than per-request position-independent caching. \Links{\href{https://arxiv.org/abs/2604.03143}{[Paper]}}}
-
-\Entry{TokenSim: LLM Inference System Simulator}{Second author · APPT 2025}
-\Item{Co-developed a modular simulator with extensible schedulers, GPU memory managers and operator-level performance models for design-space exploration of P/D disaggregation and heterogeneous hardware.}
-\Item{Matched real vLLM runs with \textbf{under 1\% geometric-mean error} in throughput and P50/P99/max latency (A100, LLaMA2-7B, ShareGPT). \Links{\href{https://arxiv.org/abs/2503.08415}{[Paper]} \href{https://github.com/pku-lemonade/TokenSim}{[Code]}}}
-
-\Entry{Beihang University · Prof.~Xianglong Liu's Group}{Jul 2024 – Jan 2025}
-\Sub{Robustness of cooperative multi-agent reinforcement learning}
-\Item{Implemented attack algorithms and experiment pipelines for a benchmark of \textbf{82,620 experiments} across 4 environments, 13 uncertainty types and 15 key hyperparameters; contributed to analysis and writing (NeurIPS 2025).}
-
-\Entry{Beihang University · Prof.~Zhongzhi Luan's Group}{Sep 2023 – May 2024}
-\Sub{Transformer operators on the MT-3000 CPU-DSP heterogeneous processor}
-\Item{Implemented and optimized the Linear operator on MT-3000 DSPs with matrix tiling and DMA double buffering, integrated through PyTorch C++ extensions.}
-\Item{Contributed to multi-head attention integration; the team's implementation reached up to \textbf{34× speedup} over a general-purpose CPU core. Outstanding Paper Award, HPC China 2024.}
-
-\Section{Projects}
-\Entry{BOOMCore: Out-of-Order LoongArch Processor}{Jul 2024 – Aug 2024}
-\Item{Co-developed a \textbf{13-stage dual-issue superscalar processor} (LoongArch32R) with branch prediction, L1 cache and TLB that boots Linux at \textbf{80 MHz} on FPGA; 4th nationally in the Loongson Cup.}
-\Item{Owned the ALU/LSU/MDU issue queues, commit logic and memory-access state machines, and backend integration. \Links{\href{https://github.com/zhhangBian/BOOM_chip}{[Code]}}}
-\Entry{Compiler Course Infrastructure}{Beihang University}
-\Item{Built a complete compiler course project that was adopted as a teaching example in national compiler-course teacher training. \Links{\href{https://github.com/zhhangBian/Compiler-Techniques}{[Code]}}}
 
 \Section{Publications}
 \Pub{TokenCake: A KV-Cache-centric Serving Framework for LLM-based Multi-Agent Applications}
@@ -89,6 +47,48 @@
   {Zhuoran Li, \Me{Zhuohang Bian}, Xin Huang, Yibo Zhao, Guangyu Sun, Youwei Zhuo}
   {Preprint}
   {\href{https://arxiv.org/abs/2608.11668}{[Paper]}}
+
+\Section{Research Experience}
+\Entry{Peking University · Prof.~Youwei Zhuo's Group}{Feb 2025 – Present}
+\Sub{Multi-agent LLM inference systems: KV-cache scheduling, reuse and compression}
+
+\Entry{TokenCake: Agent-Aware KV-Cache Scheduling}{First author · EuroSys 2027}
+\Item{Modeled workflow dependencies and tool calls to expose KV caches that sit idle during tool execution and contention on the critical path; designed \textbf{coordinated temporal and spatial schedulers}.}
+\Item{Combined proactive offloading, predictive reloading and dynamic GPU memory partitioning, reducing end-to-end latency by \textbf{up to 47.06\%} versus vLLM in memory-constrained multi-agent workloads.}
+\Item{Raised GPU KV-cache utilization by up to \textbf{16.9 percentage points} over vLLM (Qwen2.5-14B, Code-Writer). \Links{\href{https://arxiv.org/abs/2510.18586}{[Paper]} \href{https://github.com/pku-lemonade/TokenCake}{[Code]}}}
+
+\Entry{TokenDance: Collective KV-Cache Reuse and Compression}{First author · Under review}
+\Item{Designed a \textbf{KV Collector} for round-level reuse of shared context across agents, removing the position shifts that defeat prefix caching and cause redundant prefill.}
+\Item{Designed \textbf{Diff-Aware Storage}, encoding similar KV caches as block-sparse differences for \textbf{11–17× compression}.}
+\Item{Served up to \textbf{2.7× more concurrent agents} than vLLM with prefix caching under the latency SLO, with up to \textbf{1.9× faster prefill} than per-request position-independent caching. \Links{\href{https://arxiv.org/abs/2604.03143}{[Paper]}}}
+
+\Entry{TokenSim: LLM Inference System Simulator}{Second author · APPT 2025}
+\Item{Co-developed a modular simulator with extensible schedulers, GPU memory managers and operator-level performance models for design-space exploration of P/D disaggregation and heterogeneous hardware.}
+\Item{Matched real vLLM runs with \textbf{under 1\% geometric-mean error} in throughput and P50/P99/max latency (A100, LLaMA2-7B, ShareGPT). \Links{\href{https://arxiv.org/abs/2503.08415}{[Paper]} \href{https://github.com/pku-lemonade/TokenSim}{[Code]}}}
+
+\Entry{Beihang University · Prof.~Xianglong Liu's Group}{Jul 2024 – Jan 2025}
+\Sub{Robustness of cooperative multi-agent reinforcement learning}
+\Item{Implemented attack algorithms and experiment pipelines for a benchmark of \textbf{82,620 experiments} across 4 environments, 13 uncertainty types and 15 key hyperparameters; contributed to analysis and writing (NeurIPS 2025).}
+
+\Entry{Beihang University · Prof.~Zhongzhi Luan's Group}{Sep 2023 – May 2024}
+\Sub{Transformer operators on the MT-3000 CPU-DSP heterogeneous processor}
+\Item{Implemented and optimized the Linear operator on MT-3000 DSPs with matrix tiling and DMA double buffering, integrated through PyTorch C++ extensions.}
+\Item{Contributed to multi-head attention integration; the team's implementation reached up to \textbf{34× speedup} over a general-purpose CPU core. Outstanding Paper Award, HPC China 2024.}
+
+\Section{Industry Experience}
+\Entry{SenseTime · LLM Inference Systems Intern, \href{https://github.com/ModelTC/LightLLM}{LightLLM}}{Jun 2025 – Oct 2025}
+\Sub{Contributed 6 upstream pull requests: P/D-disaggregated serving, KV-cache transfer, multimodal models, observability}
+\Item{Refactored prefill/decode (P/D) node selection into extensible selectors and added \textbf{memory-aware routing} driven by predicted node load, with load reporting from each node. \href{https://github.com/ModelTC/LightLLM/pull/970}{\#970}}
+\Item{Implemented \textbf{timeout retries and KV-cache return transfers} for chunked decoding, and \textbf{CUDA/NCCL-based cross-GPU KV-cache migration} across multiple data-parallel ranks. \href{https://github.com/ModelTC/LightLLM/pull/944}{\#944} \href{https://github.com/ModelTC/LightLLM/pull/999}{\#999}}
+\Item{Integrated the \textbf{MinerU2} multimodal model end to end: tokenizer, vision modules, vision-service RPC and serving APIs. \href{https://github.com/ModelTC/LightLLM/pull/1034}{\#1034}}
+\Item{Added multimodal token-usage accounting and service-process identifiers for service observability. \href{https://github.com/ModelTC/LightLLM/pull/1011}{\#1011} \href{https://github.com/ModelTC/LightLLM/pull/1024}{\#1024}}
+
+\Section{Projects}
+\Entry{BOOMCore: Out-of-Order LoongArch Processor}{Jul 2024 – Aug 2024}
+\Item{Co-developed a \textbf{13-stage dual-issue superscalar processor} (LoongArch32R) with branch prediction, L1 cache and TLB that boots Linux at \textbf{80 MHz} on FPGA; 4th nationally in the Loongson Cup.}
+\Item{Owned the ALU/LSU/MDU issue queues, commit logic and memory-access state machines, and backend integration. \Links{\href{https://github.com/zhhangBian/BOOM_chip}{[Code]}}}
+\Entry{Compiler Course Infrastructure}{Beihang University}
+\Item{Built a complete compiler course project that was adopted as a teaching example in national compiler-course teacher training. \Links{\href{https://github.com/zhhangBian/Compiler-Techniques}{[Code]}}}
 
 \Section{Skills}
 \Skill{Languages \& GPU}{Python, C++, CUDA, NCCL, PyTorch C++ extensions}
